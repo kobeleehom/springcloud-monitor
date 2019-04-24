@@ -1,0 +1,43 @@
+server:
+  port: 8890
+
+eureka:
+  client:
+    registryFetchIntervalSeconds: 5
+    serviceUrl:
+      defaultZone: http://localhost:8880/eureka  #注册中心地址
+
+spring:
+  application:
+    name: springboot-admin-server
+#  mail:
+#    host: smtp.163.com
+#    username: #登录的邮箱名
+#    password: #登录的邮箱密码、授权码
+#    properties:
+#      mail:
+#        smtp:
+#          auth: true   #安全认证(默认是true)
+#          starttls:
+#            enable: true
+#            required: true
+  boot:
+    admin:
+      notify:
+#        mail:
+#          to: #提醒人的邮箱
+#          from: #你的邮箱（同上面登录的邮箱名）
+        #钉钉群推送
+        dingtalk:
+          enabled: true
+          webhook-token: https://oapi.dingtalk.com/robot/send?access_token=fde9cd362550fb085b89a2373e26fb4689eeb9e330e9be013a445d7bd8bca2fe
+
+
+# 安全认证
+management:
+  security:
+    enabled: false
+# 健康监控
+endpoints:
+  health:
+    sensitive: false
